@@ -119,6 +119,7 @@
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 20px;
+            align-items: start;
         }
 
         .task-card {
@@ -126,6 +127,9 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            height: auto;
         }
 
         .task-type {
@@ -157,6 +161,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            min-height: 60px;
         }
 
         .task-info {
@@ -180,6 +185,8 @@
         .task-card .description {
             color: #5f6368;
             margin-bottom: 15px;
+            flex-grow: 1;
+            min-height: 80px;
         }
 
         .task-card .reward {
@@ -194,9 +201,9 @@
 
         /* Buton stilleri */
         .button-group {
+            margin-top: auto;
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
         }
 
         .goto-task-button {
@@ -266,7 +273,7 @@
             height: 4px;
             background: #f0f2f5;
             border-radius: 2px;
-            margin-top: 10px;
+            margin-top: auto;
             display: none;
         }
 
@@ -390,6 +397,625 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
+
+        /* Responsive tasarım geliştirmeleri */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .task-grid {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .site-title {
+                font-size: 1.3rem;
+                padding: 12px;
+            }
+
+            .task-card {
+                padding: 15px;
+            }
+
+            .goto-task-button, .upload-button, .submit-button {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-right {
+                flex-direction: row;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .user-balance, .contact-button, .help-button {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+
+            .auto-reward {
+                padding: 12px;
+                margin: 15px 0;
+            }
+
+            .task-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .task-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .moving-notice .notice-content {
+                font-size: 0.9rem;
+                animation-duration: 25s;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 1.1rem;
+                padding: 8px;
+            }
+
+            .moving-notice {
+                padding: 8px;
+            }
+
+            .important-notice {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+
+            .header {
+                padding: 0.5rem;
+            }
+
+            .nav-right {
+                gap: 10px;
+            }
+
+            .task-card {
+                padding: 12px;
+            }
+
+            .task-type {
+                font-size: 0.7rem;
+            }
+
+            .task-card h3 {
+                font-size: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .task-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .goto-task-button, .upload-button, .submit-button {
+                width: 100%;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                white-space: nowrap;
+            }
+
+            .success-message {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                text-align: center;
+                padding: 10px 15px;
+            }
+
+            .auto-reward-timer {
+                font-size: 1rem;
+            }
+
+            .auto-reward-info {
+                font-size: 0.8rem;
+            }
+
+            @keyframes moveTitle {
+                0% { transform: translateX(30%); }
+                100% { transform: translateX(-30%); }
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .task-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+
+        .button-group a,
+        .button-group button {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        @media (hover: none) {
+            .goto-task-button:hover, 
+            .upload-button:hover, 
+            .submit-button:hover {
+                background-color: initial;
+            }
+        }
+
+        /* Site başlığı için mobil optimizasyon */
+        @media (max-width: 480px) {
+            .site-title {
+                padding: 8px;
+                font-size: 1rem;
+            }
+            .title-content {
+                animation: moveTitle 25s linear infinite;
+            }
+        }
+
+        /* Görev kartları için responsive iyileştirmeler */
+        .task-card {
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .task-card .button-group {
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .task-card {
+                min-height: auto;
+                padding: 15px;
+            }
+            
+            .task-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .task-card .description {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Header için responsive düzenlemeler */
+        @media (max-width: 768px) {
+            .nav-right {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .user-balance, 
+            .contact-button, 
+            .help-button {
+                font-size: 0.85rem;
+                padding: 6px 10px;
+            }
+        }
+
+        /* Tablet optimizasyonları */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .task-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .goto-task-button, 
+            .upload-button, 
+            .submit-button {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+        }
+
+        /* Mobil cihazlar için özel ayarlar */
+        @media (max-width: 480px) {
+            .task-card {
+                padding: 12px;
+            }
+            
+            .task-type {
+                font-size: 0.7rem;
+            }
+            
+            .task-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .goto-task-button, 
+            .upload-button, 
+            .submit-button {
+                width: 100%;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                white-space: nowrap;
+            }
+            
+            .auto-reward-timer {
+                font-size: 1rem;
+            }
+            
+            .auto-reward-info {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Yatay modda mobil cihazlar için */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .container {
+                padding: 10px;
+            }
+            
+            .task-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .task-card {
+                padding: 10px;
+                min-height: auto;
+            }
+        }
+
+        /* Büyük ekranlar için optimizasyon */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .task-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+
+        /* Dokunmatik cihazlar için hover efektlerini kaldırma */
+        @media (hover: none) {
+            .goto-task-button:hover, 
+            .upload-button:hover, 
+            .submit-button:hover {
+                background-color: initial;
+            }
+        }
+
+        /* Oyun stilleri */
+        .games-button {
+            background: #9c27b0;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .game-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .play-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .game-fee {
+            color: #e91e63;
+            font-weight: bold;
+        }
+
+        /* UNO oyun stilleri */
+        #unoGameArea {
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 5px;
+            min-height: 100px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 60px;
+            height: 90px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .red { background: #ff4444; color: white; }
+        .blue { background: #4285f4; color: white; }
+        .green { background: #0f9d58; color: white; }
+        .yellow { background: #f4b400; color: black; }
+        .black { background: #333; color: white; }
+
+        .game-status {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .draw-button {
+            background: #666;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .color-selection button {
+            font-size: 24px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Matematik oyunu stilleri */
+        .math-game {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .question-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #mathQuestion {
+            font-size: 2.5em;
+            margin: 15px 0;
+            color: #1a73e8;
+        }
+
+        #mathAnswer {
+            width: 200px;
+            padding: 10px;
+            font-size: 1.2em;
+            text-align: center;
+            border: 2px solid #1a73e8;
+            border-radius: 5px;
+        }
+
+        .math-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .math-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        .math-button.skip {
+            background: #f44336;
+        }
+
+        .cooldown-message {
+            color: #e91e63;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Yeni oyun stilleri */
+        .simple-game {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .cash-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cash-button:disabled {
+            background: #666;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .cash-button:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        .reward-amount {
+            display: block;
+            font-size: 0.8em;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        /* Admin panel stilleri */
+        #adminButton {
+            background: #d32f2f;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .admin-content {
+            background: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .admin-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .admin-section input {
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .admin-section button {
+            background: #1976d2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .admin-actions {
+            margin-top: 30px;
+        }
+
+        .admin-button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            color: white;
+        }
+
+        .admin-button.red {
+            background: #d32f2f;
+        }
+
+        /* Kod girme alanı stilleri */
+        .code-input-section {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        #codeInput {
+            padding: 12px;
+            border: 2px solid #1a73e8;
+            border-radius: 8px;
+            width: 200px;
+            font-size: 1em;
+        }
+
+        .code-redeem-button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .code-redeem-button:hover {
+            background: #1557b0;
+        }
     </style>
 </head>
 <body>
@@ -417,12 +1043,20 @@
     <header class="header">
         <div class="nav-container">
             <div class="nav-right">
+                <button id="adminButton" style="display:none;" onclick="showAdminPanel()">
+                    <i class="fas fa-user-shield"></i>
+                    Admin Panel
+                </button>
+                <a href="#" class="games-button" onclick="showGamesModal()">
+                    <i class="fas fa-gamepad"></i>
+                    Oyunlar
+                </a>
                 <a href="https://instagram.com/enfeszeka" target="_blank" class="help-button">
                     <i class="fab fa-instagram"></i>
                     Yardım Al
                 </a>
                 <div class="user-balance">
-                    <i class="fas fa-wallet"></i> Bakiye: 0.00 ₺
+                    <i class="fas fa-wallet"></i> Bakiye: 00.00 ₺
                 </div>
                 <a href="#" id="contactButton" class="contact-button locked" onclick="resetUserBalance(event)">
                     <i class="fas fa-lock lock-icon"></i>
@@ -441,7 +1075,7 @@
                 <span id="autoRewardTimer">2:00</span>
             </div>
             <div class="auto-reward-info">
-                Her 2 dakikada otomatik olarak 0.91₺ kazanıyorsunuz!
+                Her 2 dakikada otomatik olarak 0.01₺ kazanıyorsunuz!
             </div>
         </div>
 
@@ -630,18 +1264,16 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
         </div>
         <span>Tahmini süre: 1 dk</span>
     </div>
-    <p class="description">Hersey Hile YouTube kanalına abone ol ve ekran görüntüsü gönder. <a href="https://www.youtube.com/@herseyhile" target="_blank">Buradan git</a></p>
+    <p class="description">YouTube kanalımıza abone ol ve bildirim zilini aç, ekran görüntüsü gönder</p>
     <p class="reward">
         <i class="fas fa-coins"></i>
-        5.00 ₺
+        7.00 ₺
     </p>
     <div class="button-group">
-        <a href="https://www.youtube.com/@herseyhile" target="_blank" class="goto-task-button">
+        <a href="https://www.youtube.com/@Giritdizi" target="_blank" class="goto-task-button">
             <i class="fas fa-external-link-alt"></i>
             Göreve Git
         </a>
@@ -1093,23 +1725,68 @@
     <!-- Başarı mesajı -->
     <div class="success-message"></div>
 
+    <!-- Oyunlar Modal -->
+    <div id="gamesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeGamesModal()">&times;</span>
+            <h2><i class="fas fa-coins"></i> Hızlı Kazanç</h2>
+            
+            <!-- Kod girme alanı -->
+            <div class="code-input-section">
+                <input type="text" id="codeInput" placeholder="Kod girin (örn: FREE10)">
+                <button onclick="redeemCode()" class="code-redeem-button">
+                    <i class="fas fa-gift"></i> Kodu Kullan
+                </button>
+            </div>
+
+            <div class="simple-game">
+                <div class="game-stats">
+                    <span>Kalan Hak: <span id="clickCounter">30</span></span>
+                    <span>Sonraki Yenileme: <span id="refreshTimer">05:00</span></span>
+                </div>
+                <button onclick="earnQuickCash()" id="cashButton" class="cash-button">
+                    <i class="fas fa-mouse-pointer"></i>
+                    Tıkla ve Kazan! 
+                    <span class="reward-amount">(0.05₺ veya 0.10₺)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="modal">
+        <div class="admin-content">
+            <span class="close" onclick="closeAdminPanel()">&times;</span>
+            <h2><i class="fas fa-user-cog"></i> Admin Kontrol Paneli</h2>
+            <div class="admin-section">
+                <input type="password" id="adminPassword" placeholder="Yönetici Şifresi">
+                <button onclick="grantAdminAccess()">Giriş Yap</button>
+            </div>
+            <div class="admin-actions" style="display:none;">
+                <button onclick="setAllBalances()" class="admin-button red">
+                    <i class="fas fa-coins"></i>
+                    Tüm Kullanıcılara 9.999.999₺ Yükle
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sayfanın herhangi bir yerine şifre girişi için gizli alan ekle -->
+    <input type="password" id="secretAdminInput" style="position:absolute; left:-9999px;">
+
     <script>
         // Temel değişkenler
         let currentBalance = 0;
         let userData = {
             balance: 0,
-            completedTasks: []
+            completedTasks: [],
+            usedCodes: []
         };
 
-        // Sayfa yüklendiğinde
-        document.addEventListener('DOMContentLoaded', () => {
-            loadUserData();
-            initializeTasks();
-            updateContactButton();
-            startAutoReward();
-        });
+        // Sayfa yüklendiğinde kullanıcı verisini yükle
+        document.addEventListener('DOMContentLoaded', loadUserData);
 
-        // Kullanıcı verilerini yükle
+        // LocalStorage'dan kullanıcı verisini yükle
         function loadUserData() {
             const savedData = localStorage.getItem('userData');
             if (savedData) {
@@ -1119,10 +1796,26 @@
             }
         }
 
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            initializeTasks();
+            updateContactButton();
+            startAutoReward();
+            const savedCooldown = localStorage.getItem('mathCooldown');
+            if(savedCooldown) {
+                const data = JSON.parse(savedCooldown);
+                const timePassed = Math.floor((Date.now() - data.timestamp) / 1000);
+                mathGame.cooldown = Math.max(0, data.cooldown - timePassed);
+            }
+        });
+
         // Bakiye göstergesini güncelle
         function updateBalanceDisplay() {
-            document.querySelector('.user-balance').innerHTML = 
-                `<i class="fas fa-wallet"></i> Bakiye: ${currentBalance.toFixed(2)} ₺`;
+            const balanceElement = document.querySelector('.user-balance');
+            if(balanceElement) {
+                balanceElement.innerHTML = `<i class="fas fa-wallet"></i> Bakiye: ${currentBalance.toFixed(2)} ₺`;
+            }
         }
 
         // Görevleri başlat
@@ -1139,11 +1832,15 @@
             const imageInput = taskCard.querySelector('.image-upload');
             const selectedFile = taskCard.querySelector('.selected-file');
             const submitButton = taskCard.querySelector('.submit-button');
-            const reward = parseFloat(taskCard.querySelector('.reward').textContent.replace('₺', ''));
+            const reward = parseFloat(taskCard.querySelector('.reward').textContent.replace(/[^0-9.]/g, ''));
 
             // Görev zaten tamamlanmışsa
             if (userData.completedTasks.includes(taskId)) {
                 taskCard.classList.add('completed');
+                uploadButton.disabled = true;
+                submitButton.disabled = true;
+                uploadButton.innerHTML = '<i class="fas fa-check-circle"></i> Görev Tamamlandı';
+                submitButton.innerHTML = '<i class="fas fa-check-circle"></i> Görev Tamamlandı';
                 return;
             }
 
@@ -1164,56 +1861,93 @@
                 }
             };
 
-            submitButton.onclick = () => completeTask(taskCard, taskId, reward);
+            submitButton.onclick = () => {
+                const progressBar = taskCard.querySelector('.progress-bar');
+                const progress = taskCard.querySelector('.progress');
+                const reward = parseFloat(taskCard.querySelector('.reward').textContent.replace(/[^0-9.]/g, ''));
+
+                progressBar.style.display = 'block';
+                let width = 0;
+                const interval = setInterval(() => {
+                    if (width >= 100) {
+                        clearInterval(interval);
+                        // Görev tamamlandı
+                        taskCard.classList.add('completed');
+                        currentBalance += reward;
+                        userData.balance = currentBalance;
+                        userData.completedTasks.push(taskId);
+                        localStorage.setItem('userData', JSON.stringify(userData));
+                        updateBalanceDisplay();
+                        showSuccessMessage('Görev başarıyla tamamlandı! ' + reward + '₺ kazandınız!');
+                        progressBar.style.display = 'none';
+                        uploadButton.disabled = true;
+                        submitButton.disabled = true;
+                        uploadButton.innerHTML = '<i class="fas fa-check-circle"></i> Görev Tamamlandı';
+                        submitButton.innerHTML = '<i class="fas fa-check-circle"></i> Görev Tamamlandı';
+                    } else {
+                        width++;
+                        progress.style.width = width + '%';
+                    }
+                }, 20);
+            };
         }
 
         // Görevi tamamla
         function completeTask(taskCard, taskId, reward) {
             const progressBar = taskCard.querySelector('.progress-bar');
             const progress = taskCard.querySelector('.progress');
+            const submitButton = taskCard.querySelector('.submit-button');
 
             progressBar.style.display = 'block';
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Kanıt Kontrol Ediliyor... <span id="verification-timer">50</span>s';
+
             let progress_value = 0;
+            const verificationTime = 50; // 50 seconds
+            const updateInterval = 100; // Update every 100ms
+            const progressIncrement = (100 / (verificationTime * 1000)) * updateInterval;
+            let timeLeft = verificationTime;
 
             const interval = setInterval(() => {
-                progress_value += 1;
-                progress.style.width = `${progress_value * 10}%`;
+                progress_value += progressIncrement;
+                progress.style.width = `${Math.min(progress_value, 100)}%`;
 
-                if (progress_value >= 10) {
+                if (progress_value >= 100) {
                     clearInterval(interval);
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="fas fa-check-circle"></i> Görevi Tamamla';
                     
                     // Ödülü ver ve kaydet
                     userData.completedTasks.push(taskId);
                     currentBalance += reward;
                     userData.balance = currentBalance;
                     localStorage.setItem('userData', JSON.stringify(userData));
-
-                    // UI güncelle
                     updateBalanceDisplay();
-                    showSuccessMessage(`Görev onaylandı! +${reward}₺ kazandınız!`);
-                    taskCard.classList.add('completed');
+                    showSuccessMessage(`+${reward}₺ kazandınız!`);
                     updateContactButton();
                 }
-            }, 100);
+            }, updateInterval);
         }
 
         // Başarı mesajı göster
-        function showSuccessMessage(message) {
+        function showSuccessMessage(message, duration = 3000, isError = false) {
             const successMessage = document.querySelector('.success-message');
             successMessage.innerHTML = `
-                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-${isError ? 'times' : 'check-circle'}"></i>
                 ${message}
             `;
             successMessage.style.display = 'block';
             setTimeout(() => {
                 successMessage.style.display = 'none';
-            }, 3000);
+            }, duration);
         }
 
         // İlan verme butonunu güncelle
         function updateContactButton() {
             const contactButton = document.getElementById('contactButton');
-            if (currentBalance >= 20) {
+            const requiredAmount = 20;
+            
+            if (currentBalance >= requiredAmount) {
                 contactButton.classList.remove('locked');
                 contactButton.style.pointerEvents = 'auto';
                 contactButton.title = 'İlan vermek için tıklayın (Tüm bakiyeniz sıfırlanacak)';
@@ -1221,9 +1955,15 @@
                     <i class="fab fa-whatsapp"></i>
                     İlan Ver / İletişim (Kullanılabilir!)
                 `;
-                showSuccessMessage('Tebrikler! Artık ilan verebilirsiniz!');
+                
+                // Sadece ilk kez 20₺'yi geçtiğinde bildirim göster
+                if(!userData.reachedThreshold) {
+                    showSuccessMessage('Tebrikler! Artık ilan verebilirsiniz!');
+                    userData.reachedThreshold = true;
+                    localStorage.setItem('userData', JSON.stringify(userData));
+                }
             } else {
-                const remainingAmount = (20 - currentBalance).toFixed(2);
+                const remainingAmount = (requiredAmount - currentBalance).toFixed(2);
                 contactButton.classList.add('locked');
                 contactButton.style.pointerEvents = 'none';
                 contactButton.title = `İlan vermek için ${remainingAmount}₺ daha kazanmalısınız`;
@@ -1277,6 +2017,204 @@
                 }
             }, 1000);
         }
+
+        // Oyun fonksiyonları
+        function showGamesModal() {
+            document.getElementById('gamesModal').style.display = 'block';
+        }
+
+        function closeGamesModal() {
+            document.getElementById('gamesModal').style.display = 'none';
+        }
+
+        // Yeni oyun değişkenleri
+        let quickCashGame = {
+            dailyClicks: 30,
+            cooldown: 300, // 5 dakika
+            lastPlayed: 0,
+            clickInterval: null
+        };
+
+        function earnQuickCash() {
+            if(quickCashGame.dailyClicks <= 0) return;
+            
+            const randomChance = Math.random();
+            const earnings = randomChance < 0.5 ? 0.05 : 0.10;
+            
+            currentBalance += earnings;
+            currentBalance = parseFloat(currentBalance.toFixed(2));
+            userData.balance = currentBalance;
+            localStorage.setItem('userData', JSON.stringify(userData));
+            
+            updateBalanceDisplay();
+            updateContactButton();
+            
+            quickCashGame.dailyClicks--;
+            updateQuickCashDisplay();
+            showSuccessMessage(`+${earnings.toFixed(2)}₺ kazandınız!`);
+
+            if(quickCashGame.dailyClicks === 0) {
+                startCooldownTimer();
+            }
+        }
+
+        function startCooldownTimer() {
+            quickCashGame.cooldown = 300;
+            quickCashGame.lastPlayed = Date.now();
+            localStorage.setItem('quickCashData', JSON.stringify({
+                clicks: quickCashGame.dailyClicks,
+                cooldown: quickCashGame.cooldown,
+                timestamp: Date.now()
+            }));
+
+            quickCashGame.clickInterval = setInterval(() => {
+                quickCashGame.cooldown--;
+                
+                if(quickCashGame.cooldown <= 0) {
+                    clearInterval(quickCashGame.clickInterval);
+                    quickCashGame.dailyClicks = 30;
+                    localStorage.removeItem('quickCashData');
+                }
+                
+                updateQuickCashDisplay();
+            }, 1000);
+        }
+
+        function updateQuickCashDisplay() {
+            const clickCounter = document.getElementById('clickCounter');
+            const timerDisplay = document.getElementById('refreshTimer');
+            const cashButton = document.getElementById('cashButton');
+            
+            clickCounter.textContent = quickCashGame.dailyClicks;
+            
+            // Geri sayım formatı
+            const minutes = Math.floor(quickCashGame.cooldown / 60);
+            const seconds = quickCashGame.cooldown % 60;
+            timerDisplay.textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Buton durumu
+            cashButton.disabled = quickCashGame.dailyClicks <= 0;
+        }
+
+        // Sayfa yüklendiğinde verileri kontrol et
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedData = localStorage.getItem('quickCashData');
+            if(savedData) {
+                const data = JSON.parse(savedData);
+                const timePassed = Math.floor((Date.now() - data.timestamp) / 1000);
+                
+                quickCashGame.dailyClicks = data.clicks;
+                quickCashGame.cooldown = Math.max(0, data.cooldown - timePassed);
+                
+                if(quickCashGame.cooldown <= 0) {
+                    quickCashGame.dailyClicks = 30;
+                    localStorage.removeItem('quickCashData');
+                } else {
+                    startCooldownTimer();
+                }
+            }
+        });
+
+        // Admin fonksiyonları
+        const ADMIN_PASSWORD = "lyrcs"; // Yeni şifre
+
+        function showAdminPanel() {
+            document.getElementById('adminModal').style.display = 'block';
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        function grantAdminAccess() {
+            const enteredPassword = document.getElementById('adminPassword').value;
+            if(enteredPassword === ADMIN_PASSWORD) {
+                document.querySelector('.admin-actions').style.display = 'block';
+                document.getElementById('adminButton').style.display = 'inline-block';
+                showSuccessMessage('Admin yetkileri aktif edildi!');
+            } else {
+                showSuccessMessage('Hatalı şifre!', 3000, true);
+            }
+        }
+
+        function setAllBalances() {
+            // Tüm kullanıcı verilerini güncelle
+            const allUserData = JSON.parse(localStorage.getItem('userData')) || {};
+            allUserData.balance = 9999999;
+            localStorage.setItem('userData', JSON.stringify(allUserData));
+            
+            // Anlık güncelleme
+            currentBalance = 9999999;
+            updateBalanceDisplay();
+            updateContactButton();
+            showSuccessMessage('Tüm kullanıcı bakiyeleri 9.999.999₺ olarak ayarlandı!');
+            closeAdminPanel();
+        }
+
+        // Sayfa içinde şifre girildiğinde admin panelini aç
+        document.addEventListener('keydown', (e) => {
+            const secretInput = document.getElementById('secretAdminInput');
+            secretInput.focus();
+            secretInput.value += e.key;
+            
+            if(secretInput.value.includes('lyrcs')) {
+                document.getElementById('adminButton').style.display = 'inline-block';
+                secretInput.value = '';
+                showSuccessMessage('Admin paneli aktif!');
+            }
+        });
+
+        // Admin panel fonksiyonlarını tekrar ekle
+        function showAdminPanel() {
+            document.getElementById('adminModal').style.display = 'block';
+        }
+
+        function setAllBalances() {
+            currentBalance = 9999999;
+            userData.balance = currentBalance;
+            localStorage.setItem('userData', JSON.stringify(userData));
+            updateBalanceDisplay();
+            showSuccessMessage('Tüm bakiyeler 9.999.999₺ yapıldı!');
+        }
+
+        // Kod kullanım fonksiyonu
+        const validCodes = {
+            "FREE10": 10,
+            "BONUS5": 5,
+            "LYRCS": 9999
+        };
+
+        // Kod kullanım fonksiyonunu güncelle
+        function redeemCode() {
+            const code = document.getElementById('codeInput').value.toUpperCase();
+            
+            if(!userData.usedCodes) userData.usedCodes = [];
+            
+            if(validCodes[code] && !userData.usedCodes.includes(code)) {
+                const reward = validCodes[code];
+                currentBalance += reward;
+                userData.balance = currentBalance;
+                userData.usedCodes.push(code);
+                localStorage.setItem('userData', JSON.stringify(userData));
+                
+                // İlan verme butonunu güncelle
+                updateContactButton(); // Bu satırı ekleyin
+                
+                showSuccessMessage(`${reward}₺ kazandınız!`);
+                updateBalanceDisplay();
+                document.getElementById('codeInput').value = '';
+                
+                // Bakiye 20₺'yi geçtiyse bildirim göster
+                if(currentBalance >= 20 && !userData.reachedThreshold) {
+                    showSuccessMessage('Tebrikler! Artık ilan verebilirsiniz!');
+                }
+            } else if(userData.usedCodes.includes(code)) {
+                showSuccessMessage('Bu kodu zaten kullandınız!', 3000, true);
+            } else {
+                showSuccessMessage('Geçersiz kod!', 3000, true);
+            }
+        }
     </script>
 </body>
-</html> 
+</html>
